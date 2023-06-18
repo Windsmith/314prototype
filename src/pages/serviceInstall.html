@@ -66,6 +66,27 @@
             </p>
             <p class="text-xl mt-10">
                 Make sure that the service source code fulfills the following requirements:
+            <ul class="mt-4">
+                <li>
+                    - a routes.js file that implements all the routes and endpoints for the pages and the data they
+                    require (implemented using express.js)
+                </li>
+                <li>
+                    - a serviceConfig.json file contains a JSON object containing the following attributes:
+                    <ul>
+                        <li> &nbsp;&nbsp;&nbsp;&nbsp; - name: name of the service and of the project folder. They all
+                            must
+                            have the same name.
+                        </li>
+                        Eg. {"name": "assignments"}
+                    </ul>
+                </li>
+                <li>
+                    - Make sure that that the routes.js file is inside an src folder (which is inside the project root
+                    folder)
+                </li>
+                <li>- make sure the serviceConfig.json file is in the root folder</li>
+            </ul>
             </p>
 
         </div>
