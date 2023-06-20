@@ -48,8 +48,8 @@ app.post('/install', upload.single('dropzone_file'), (req, res) => {
     fs.writeFileSync('services.json', JSON.stringify(jsonData))
 
     import(__dirname + '/services/' + filename.substring(0, filename.length - 4) + '/' + filename.substring(0, filename.length - 4) + '/src/routes.js').then((obj) => {
-        console.log(jsonServiceData.name)
         app.use(`/${jsonServiceData.name}`, obj.default)
+        res.sendFile(__dirname + '/pages/index.html');
     })
 });
 
