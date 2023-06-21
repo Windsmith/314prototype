@@ -32,7 +32,22 @@ var upload = multer({
 });
 
 app.post('/install', upload.single('dropzone_file'), (req, res) => {
+    if (typeof req.file === 'undefined') {
+        console.log("upload a file")
+        res.sendFile(__dirname + '/pages/serviceInstall.html');
+        return
+    }
+
     let filename = req.file.originalname;
+
+    //100 mb limit
+
+    if (req.file.size > 104857600) {
+        console.log("not installed, file too big")
+        res.sendFile(__dirname + '/pages/serviceInstall.html');
+        return
+    }
+
     const zip = new AdmZip(__dirname + "/services/" + filename);
     zip.extractAllTo(__dirname + '/services/' + filename.substring(0, filename.length - 4))
     fs.unlinkSync(__dirname + "/services/" + filename);
